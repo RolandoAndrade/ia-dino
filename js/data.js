@@ -5,7 +5,7 @@ const WIDTH=600;
 const HEIGHT=300;
 
 const PLAYERX=100;
-const PLAYERY=195;
+const PLAYERY=200;
 const GRAVITY=2;
 const PLAYER_JUMP=-20;
 const PLAYER_COLLIDER=50;

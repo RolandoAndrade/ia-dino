@@ -18,15 +18,35 @@ class Player
         let a=this;
         document.onkeydown=function (e)
         {
+            if(e.keyCode===38)
+                a.up();
+            else if(e.keyCode===40)
+                a.down();
+        }
+        document.onkeyup=function (e)
+        {
+            if(e.keyCode===40)
+            {
+                a.unDuck();
+            }
 
-            a.up();
         }
     }
 
     draw()
     {
-        ImageLoader.drawImage(this.walkSprites[Math.trunc(this.spriteIndex)],this.x,this.y,this.w,this.h);
-        this.spriteIndex=(this.spriteIndex+0.5)%3;
+        if(this.isDucked)
+        {
+            ImageLoader.drawImage((this.duckSpriteIndex)%2===0?DINO_DUCK1:DINO_DUCK2,this.x,this.y,this.w,this.h);
+            this.duckSpriteIndex=(this.duckSpriteIndex+0.5)%2;
+        }
+        else
+        {
+            ImageLoader.drawImage(this.walkSprites[Math.trunc(this.spriteIndex)],this.x,this.y,this.w,this.h);
+            this.spriteIndex=(this.spriteIndex+0.5)%3;
+        }
+
+
     }
 
     move()
@@ -40,13 +60,35 @@ class Player
 
     up()
     {
-        this.vy=PLAYER_JUMP;
-        this.isGrounded=false;
+        if(this.isGrounded)
+        {
+            this.vy=PLAYER_JUMP;
+            this.isGrounded=false;
+        }
+    }
+
+    down()
+    {
+        if(this.isGrounded)
+        {
+            this.isDucked=true;
+            this.w=65;
+        }
+        else
+        {
+            this.vy+=GRAVITY;
+        }
     }
 
     ground()
     {
         this.isGrounded=true;
         this.y=PLAYERY;
+    }
+
+    unDuck()
+    {
+        this.isDucked=false;
+        this.w=50;
     }
 }

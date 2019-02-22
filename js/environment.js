@@ -23,7 +23,7 @@ class Land
 
     collision(player)
     {
-        if(player.y+PLAYER_COLLIDER>=this.y+this.deepnest)
+        if(player.y>=PLAYERY)
         {
             player.ground();
         }
