@@ -5,15 +5,15 @@ const WIDTH=600;
 const HEIGHT=300;
 
 const PLAYERX=100;
-const PLAYERY=200;
+const PLAYERY=195;
 const GRAVITY=2;
-const PLAYER_JUMP=-20;
+const PLAYER_JUMP=-21;
 const PLAYER_COLLIDER=50;
 
 const DINO={x: 74, y:0, w:90, h:95};
 
 
-const DINO1={x: 1675, y:0, w:90, h:95};
+const DINO1={x: 1678, y:0, w:88, h:95};
 const DINO2={x: 1766, y:0, w:88, h:95};
 const DINO3={x: 1854, y:0, w:88, h:95};
 const DINO4={x: 1942, y:0, w:88, h:95};
@@ -38,4 +38,9 @@ const BCAC3={x: 752, y:0, w:50, h:100};
 const BCAC4={x: 802, y:0, w:48, h:100};
 const BCAC5={x: 850, y:0, w:105, h:100};
 
+
+
+const SCROLL=7;
 const FLOOR={x: 0, y:105, w:2400, h:25};
+const CACTUS_HEIGHT=60;
+const CACTUS_WIDTH=50;

@@ -4,17 +4,21 @@ let ll=new Land(1);
 l.draw();
 let player=new Player();
 
+let cactus=new Cactus();
+
 ctx.fillStyle="#fff";
 function loop()
 {
     ctx.fillRect(0,0,600,300);
-    l.move(5);
-    ll.move(5);
+    l.move(SCROLL);
+    ll.move(SCROLL);
     l.draw();
     ll.draw();
     player.move();
     l.collision(player);
     ll.collision(player);
     player.draw();
+    if(cactus.move(SCROLL)) cactus.x=WIDTH;
+    cactus.draw();
 }
 window.setInterval(loop,24);
