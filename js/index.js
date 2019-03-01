@@ -14,11 +14,15 @@ function loop()
     ll.move(SCROLL);
     l.draw();
     ll.draw();
-    player.move();
+    if(cactus.move(SCROLL)) cactus.x=WIDTH;
+    player.move(SCROLL);
+
     l.collision(player);
     ll.collision(player);
-    player.draw();
-    if(cactus.move(SCROLL)) cactus.x=WIDTH;
+
+
+    cactus.collision(player);
     cactus.draw();
+    player.draw();
 }
 window.setInterval(loop,24);

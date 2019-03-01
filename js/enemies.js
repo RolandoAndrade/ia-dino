@@ -19,4 +19,23 @@ class Cactus
         this.x-=delta;
         return this.x<-this.w;
     }
+
+    collision(player)
+    {
+        let error=5;
+        if(this.x-error<=player.x+player.w&&player.x<=this.x+this.w+error&&
+            player.y+player.h>=this.y+error)
+        {
+            player.kill(player.y);
+        }
+        return !player.isAlive;
+    }
+}
+
+class Bird
+{
+    constructor()
+    {
+
+    }
 }

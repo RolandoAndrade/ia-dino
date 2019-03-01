@@ -11,8 +11,9 @@ class Player
         this.isGrounded=true;
         this.isDucked=false;
 
+        this.isAlive=true;
+
         this.walkSprites=[DINO1,DINO3,DINO4];
-        this.blink=0;
         this.spriteIndex=0;
         this.duckSpriteIndex=0;
         let a=this;
@@ -21,8 +22,11 @@ class Player
             if(e.keyCode===38)
                 a.up();
             else if(e.keyCode===40)
+            {
                 a.down();
-        }
+            }
+
+        };
         document.onkeyup=function (e)
         {
             if(e.keyCode===40)
@@ -35,26 +39,36 @@ class Player
 
     draw()
     {
-        if(this.isDucked)
+        if(this.isAlive)
         {
-            ImageLoader.drawImage((this.duckSpriteIndex)%2===0?DINO_DUCK1:DINO_DUCK2,this.x,this.y,this.w,this.h);
-            this.duckSpriteIndex=(this.duckSpriteIndex+0.5)%2;
+            if(this.isDucked&&this.isGrounded)
+            {
+                this.w=65;
+                ImageLoader.drawImage((this.duckSpriteIndex)%2===0?DINO_DUCK1:DINO_DUCK2,this.x,this.y,this.w,this.h);
+                this.duckSpriteIndex=(this.duckSpriteIndex+0.5)%2;
+            }
+            else
+            {
+                ImageLoader.drawImage(this.walkSprites[Math.trunc(this.spriteIndex)],this.x,this.y,this.w,this.h);
+                this.spriteIndex=(this.spriteIndex+0.5)%3;
+            }
         }
         else
         {
-            ImageLoader.drawImage(this.walkSprites[Math.trunc(this.spriteIndex)],this.x,this.y,this.w,this.h);
-            this.spriteIndex=(this.spriteIndex+0.5)%3;
+            ImageLoader.drawImage(DINO_DEATH,this.x,this.y,this.w,this.h);
         }
-
-
     }
 
-    move()
+    move(delta)
     {
-        if(!this.isGrounded)
+        if(!this.isGrounded&&this.isAlive)
         {
             this.y+=this.vy;
             this.vy+=GRAVITY;
+        }
+        else if(!this.isAlive)
+        {
+            this.x-=delta;
         }
     }
 
@@ -69,17 +83,12 @@ class Player
 
     down()
     {
-        if(this.isGrounded)
+        if(!this.isGrounded)
         {
-            this.isDucked=true;
-            this.w=65;
+            this.vy+=2*GRAVITY;
         }
-        else
-        {
-            this.vy+=GRAVITY;
-        }
+        this.isDucked=true;
     }
-
     ground()
     {
         this.isGrounded=true;
@@ -90,5 +99,11 @@ class Player
     {
         this.isDucked=false;
         this.w=50;
+    }
+
+    kill(y)
+    {
+        this.isAlive=false;
+        this.y=y;
     }
 }

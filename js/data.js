@@ -41,6 +41,6 @@ const BCAC5={x: 850, y:0, w:105, h:100};
 
 
 const SCROLL=7;
-const FLOOR={x: 0, y:105, w:2400, h:25};
+const FLOOR={x: 1, y:105, w:2400, h:25};
 const CACTUS_HEIGHT=60;
-const CACTUS_WIDTH=50;
+const CACTUS_WIDTH=40;
