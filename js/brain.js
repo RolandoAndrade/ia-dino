@@ -11,6 +11,19 @@ class ReLu
     }
 }
 
+class Linear
+{
+    F(x)
+    {
+        return Math.min(Math.max(0, x),1);
+    }
+
+    dF(x)
+    {
+        return x > 0 ? 1 : 0;
+    }
+}
+
 class Sigmoid
 {
     F(x)
@@ -41,7 +54,7 @@ class Brain
         this.weightX = Math.random() * 2 - 1;
         this.weightY = Math.random() * 2 - 1;
         this.bias = 1;
-        this.activation = new Sigmoid();
+        this.activation = new Linear();
         this.transfer = new TransferFunction();
     }
 

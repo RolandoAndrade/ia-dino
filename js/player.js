@@ -5,10 +5,8 @@ class Player
 
         this.reset();
         this.walkSprites=[DINO1,DINO3,DINO4];
-        this.spriteIndex=0;
-        this.duckSpriteIndex=0;
 
-        this.meters = 0;
+
         this.brain = new Brain();
 
 
@@ -45,6 +43,8 @@ class Player
         this.isDucked=false;
         this.isAlive=true;
         this.meters = 0;
+        this.spriteIndex=0;
+        this.duckSpriteIndex=0;
     }
 
     draw()
@@ -71,6 +71,7 @@ class Player
 
     think(enemy)
     {
+        this.meters++;
         let o = this.brain.getOutput(this, enemy);
         switch (o)
         {
@@ -98,7 +99,6 @@ class Player
         {
             this.x-=delta;
         }
-        this.meters++;
     }
 
     up()

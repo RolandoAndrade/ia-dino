@@ -2,18 +2,23 @@ class Generation
 {
     constructor(players)
     {
-        this.players = players;
         this.generation = 1;
         this.SURVIVORS = SURVIVOR_RATE*POPULATION;
     }
 
-    kill()
+    kill(a)
     {
+        if(a)
+            console.log(this.players);
         this.players.sort(function(a, b) {return b.meters - a.meters});
+        if(a)
+            console.log(this.players);
         for(let i = 0; i < POPULATION-this.SURVIVORS; i++)
         {
             this.players.pop();
         }
+        if (a)
+            console.log(this.players);
     }
 
 
@@ -39,14 +44,17 @@ class Generation
     }
 
 
-    nextGeneration()
+    nextGeneration(players, a = false)
     {
-        this.kill();
+        this.players = [...players];
+        console.log("entro");
+        this.kill(a);
         for(let i = this.SURVIVORS; i < POPULATION; i++)
         {
             this.procreate();
         }
         this.players.forEach((e)=>e.reset());
         this.generation++;
+        return this.players;
     }
 }
