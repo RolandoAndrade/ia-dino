@@ -26,14 +26,15 @@ class Game
         })
     }
 
-    reset(a = true)
+    reset(a = false)
     {
         this.gameOver = true;
 
-        this.players = this.family.nextGeneration(this.players, a);
+        this.family.nextGeneration(a);
 
         this.cactus = new Cactus();
         this.land = new LargeLand();
+        this.gameOver = false;
     }
 
     loop()
@@ -65,9 +66,7 @@ class Game
 
             if(q===POPULATION)
             {
-                console.log(this.players);
                 this.reset();
-
             }
         }
     }

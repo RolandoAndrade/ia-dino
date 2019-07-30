@@ -9,9 +9,6 @@ class Player
 
         this.brain = new Brain();
 
-
-        let a=this;
-
         /*document.onkeydown=function (e)
         {
             if(e.keyCode===38)

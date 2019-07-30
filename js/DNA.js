@@ -4,6 +4,7 @@ class Generation
     {
         this.generation = 1;
         this.SURVIVORS = SURVIVOR_RATE*POPULATION;
+        this.players = players;
     }
 
     kill(a)
@@ -44,10 +45,8 @@ class Generation
     }
 
 
-    nextGeneration(players, a = false)
+    nextGeneration(a = false)
     {
-        this.players = [...players];
-        console.log("entro");
         this.kill(a);
         for(let i = this.SURVIVORS; i < POPULATION; i++)
         {
@@ -55,6 +54,8 @@ class Generation
         }
         this.players.forEach((e)=>e.reset());
         this.generation++;
-        return this.players;
+        /*
+        * weightX: 0.004861720926817647
+          weightY: 0.0039266401669850026*/
     }
 }

@@ -51,8 +51,8 @@ class Brain
 {
     constructor()
     {
-        this.weightX = Math.random() * 2 - 1;
-        this.weightY = Math.random() * 2 - 1;
+        this.weightX = (Math.random() * 2 - 1) * 0.15;
+        this.weightY = (Math.random() * 2 - 1) * 0.15;
         this.bias = 1;
         this.activation = new Linear();
         this.transfer = new TransferFunction();
