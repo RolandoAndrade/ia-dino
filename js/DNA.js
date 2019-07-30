@@ -46,5 +46,7 @@ class Generation
         {
             this.procreate();
         }
+        this.players.forEach((e)=>e.reset());
+        this.generation++;
     }
 }

@@ -9,11 +9,22 @@ class Game
     init()
     {
         this.gameOver = false;
-        this.player = new Player();
+        this.players = [];
+        for(let i = 0; i < POPULATION; i++)
+        {
+            this.players.push(new Player());
+        }
+        this.family = new Generation(this.players);
         this.fabric = new FabricOfCactus();
         this.cactus = new Cactus();
         this.land = new LargeLand();
         this.loop();
+    }
+
+    reset()
+    {
+        this.family.nextGeneration();
+        this.players = this.family.players;
     }
 
     loop()
@@ -22,20 +33,25 @@ class Game
         this.land.move(SCROLL);
         this.land.draw();
         if(this.cactus.move(SCROLL)) this.cactus = this.fabric.createRandom();
-
-
-        this.player.move(SCROLL);
-
-        this.land.collision(this.player);
-        this.cactus.collision(this.player);
-
         this.cactus.draw();
-        this.player.draw();
-        if(!this.player.isAlive)
+        let q = 0;
+        this.players.forEach((e)=>{
+            e.think(this.cactus);
+            e.move(SCROLL);
+            this.land.collision(e);
+            this.cactus.collision(e);
+            e.draw();
+            if(!e.isAlive)
+            {
+                q++;
+            }
+        })
+        if(q===POPULATION)
         {
-            this.init();
+            this.reset();
         }
-        this.player.think(this.cactus);
+
+
 
     }
 }

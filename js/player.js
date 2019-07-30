@@ -2,17 +2,8 @@ class Player
 {
     constructor()
     {
-        this.x=PLAYERX;
-        this.y=PLAYERY;
-        this.w=50;
-        this.h=50;
 
-        this.vy=0;
-        this.isGrounded=true;
-        this.isDucked=false;
-
-        this.isAlive=true;
-
+        this.reset();
         this.walkSprites=[DINO1,DINO3,DINO4];
         this.spriteIndex=0;
         this.duckSpriteIndex=0;
@@ -23,7 +14,7 @@ class Player
 
         let a=this;
 
-        document.onkeydown=function (e)
+        /*document.onkeydown=function (e)
         {
             if(e.keyCode===38)
                 a.up();
@@ -40,7 +31,20 @@ class Player
                 a.unDuck();
             }
 
-        }
+        }*/
+    }
+
+    reset()
+    {
+        this.x=PLAYERX;
+        this.y=PLAYERY;
+        this.w=50;
+        this.h=50;
+        this.vy=0;
+        this.isGrounded=true;
+        this.isDucked=false;
+        this.isAlive=true;
+        this.meters = 0;
     }
 
     draw()
