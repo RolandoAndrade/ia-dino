@@ -31,6 +31,10 @@ class Game
 
         this.cactus.draw();
         this.player.draw();
+        if(!this.player.isAlive)
+        {
+            this.init();
+        }
 
     }
 }
