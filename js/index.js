@@ -7,4 +7,4 @@ function loop()
 {
     game.loop();
 }
-window.setInterval(loop,24);
+window.setInterval(loop,8);

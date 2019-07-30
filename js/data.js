@@ -47,5 +47,5 @@ const CACTUS_WIDTH=40;
 
 const SURVIVOR_RATE = 0.3;
 const POPULATION = 100;
-const MUTATION_RATE = 0.3;
+const MUTATION_RATE = 0.5;
 const STEP_SIZE = 0.1;

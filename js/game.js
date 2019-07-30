@@ -19,12 +19,19 @@ class Game
         this.cactus = new Cactus();
         this.land = new LargeLand();
         this.loop();
+        let a = this;
+        document.addEventListener("keydown", function (e)
+        {
+            a.reset();
+        })
     }
 
     reset()
     {
         this.family.nextGeneration();
         this.players = this.family.players;
+        this.cactus = new Cactus();
+        this.land = new LargeLand();
     }
 
     loop()
