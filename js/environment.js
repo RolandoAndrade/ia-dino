@@ -29,3 +29,31 @@ class Land
         }
     }
 }
+
+
+class LargeLand
+{
+    constructor()
+    {
+        this.l0 = new Land(0);
+        this.l1 = new Land(1);
+    }
+
+    draw()
+    {
+        this.l0.draw();
+        this.l1.draw();
+    }
+
+    move(delta)
+    {
+        this.l0.move(delta);
+        this.l1.move(delta);
+    }
+
+    collision(player)
+    {
+        this.l0.collision(player);
+        this.l1.collision(player);
+    }
+}
