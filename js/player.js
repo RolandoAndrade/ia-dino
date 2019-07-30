@@ -16,7 +16,11 @@ class Player
         this.walkSprites=[DINO1,DINO3,DINO4];
         this.spriteIndex=0;
         this.duckSpriteIndex=0;
+
+        this.meters = 0;
+        this.brain = new Brain();
         let a=this;
+
         document.onkeydown=function (e)
         {
             if(e.keyCode===38)
@@ -70,6 +74,7 @@ class Player
         {
             this.x-=delta;
         }
+        this.meters++;
     }
 
     up()

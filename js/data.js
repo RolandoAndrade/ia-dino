@@ -44,3 +44,8 @@ const SCROLL=7;
 const FLOOR={x: 1, y:105, w:2400, h:25};
 const CACTUS_HEIGHT=60;
 const CACTUS_WIDTH=40;
+
+const SURVIVOR_RATE = 0.3;
+const POPULATION = 100;
+const MUTATION_RATE = 0.3;
+const STEP_SIZE = 0.1;

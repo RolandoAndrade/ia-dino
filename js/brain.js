@@ -43,7 +43,8 @@ class Brain
 {
     constructor()
     {
-        this.mutate();
+        this.weightX = Math.random() * 2 - 1;
+        this.weightY = Math.random() * 2 - 1;
         this.bias = 1;
         this.activation = new Sigmoid();
         this.transfer = new TransferFunction();
@@ -51,8 +52,8 @@ class Brain
 
     mutate()
     {
-        this.weightX = Math.random() * 2 - 1;
-        this.weightY = Math.random() * 2 - 1;
+        this.weightX += Math.random() * 2 * STEP_SIZE - STEP_SIZE;
+        this.weightY += Math.random() * 2 * STEP_SIZE - STEP_SIZE;
     }
 
     getOutput(player, enemy)
