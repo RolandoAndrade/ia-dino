@@ -35,6 +35,7 @@ class Game
         {
             this.init();
         }
+        this.player.think(this.cactus);
 
     }
 }

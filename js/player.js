@@ -19,6 +19,8 @@ class Player
 
         this.meters = 0;
         this.brain = new Brain();
+
+
         let a=this;
 
         document.onkeydown=function (e)
@@ -61,6 +63,24 @@ class Player
         {
             ImageLoader.drawImage(DINO_DEATH,this.x,this.y,this.w,this.h);
         }
+    }
+
+    think(enemy)
+    {
+        let o = this.brain.getOutput(this, enemy);
+        switch (o)
+        {
+            case -1:
+                this.down();
+                break;
+            case 0:
+                this.unDuck();
+                break;
+            case 1:
+                this.up();
+                break;
+        }
+
     }
 
     move(delta)

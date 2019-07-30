@@ -28,13 +28,8 @@ class TransferFunction
 {
     F(x)
     {
-        switch (x)
-        {
-            case x<0.33:
-                return -1;
-            case x<0.66:
-                return 0;
-        }
+        if(x<0.33) return -1;
+        if(x<0.66) return 0;
         return 1;
     }
 }
@@ -60,6 +55,7 @@ class Brain
     {
         let deltaX = player.x - enemy.x;
         let deltaY = player.y - enemy.y;
-        return this.transfer.F(this.activation.F(deltaX * this.weightX + deltaY * this.weightY + this.bias));
+        let out = this.activation.F(deltaX * this.weightX + deltaY * this.weightY + this.bias);
+        return this.transfer.F(out);
     }
 }
